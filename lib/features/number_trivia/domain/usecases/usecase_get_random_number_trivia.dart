@@ -1,18 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_clean_architecture/core/error/failures.dart';
 import 'package:flutter_clean_architecture/core/usecases/usecase.dart';
-import 'package:flutter_clean_architecture/features/number_trivia/domain/entity/number_trivia.dart';
+import 'package:flutter_clean_architecture/features/number_trivia/domain/entity/entity_number_trivia.dart';
 import 'package:flutter_clean_architecture/features/number_trivia/domain/repository/number_trivia_repository.dart';
 
-class GetConcreteNumberTrivia extends UseCase<NumberTrivia, int>{
+class GetRandomNumberTrivia extends UseCase<NumberTrivia, NoParams>  {
 
   final NumberTriviaRepository numberTriviaRepository;
 
-  GetConcreteNumberTrivia(this.numberTriviaRepository);
+  GetRandomNumberTrivia(this.numberTriviaRepository);
 
   @override
-  Future<Either<Failure,NumberTrivia>> call (int number,) async {
-    return await numberTriviaRepository.getConcreteNumberTrivia(number);
+  Future<Either<Failure, NumberTrivia>> call(NoParams params) async {
+    return await numberTriviaRepository.getRandomNumberTrivia();
   }
 
 }
